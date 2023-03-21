@@ -1,16 +1,35 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<head>
+  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+  <style>
+    body {
+    background-color: #f5f5f9;
+    }
+  </style>
+</head>
+<div class="container mt-6 ">
+  <div class="row ">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <h3 class="text-center">Reset your password</h3>
+      <div class="shadow-sm p-5 mb-4 bg-white rounded ">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <div class="field form-group">
+            <%= f.label :email , class:"fw-custom-email-pass" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control " , placeholder:"user@example.com" %>
+            <% if @user.errors[:email].any? %>
+              <div class="text-danger">
+                <%= @user.errors[:email].first %>
+              </div>
+            <% end %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Send me reset password instructions" , class:"form-control clr-log mt-4 " %>
+          </div>
+        <% end %>
+        <div >
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

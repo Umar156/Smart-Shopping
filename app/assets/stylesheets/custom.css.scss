@@ -1,0 +1,74 @@
+.no-underline {
+  text-decoration: none;
+}
+.remove-underline-clr {
+  text-decoration: none;
+  color: gray;
+  float: right;
+}
+.fw-custom-email-pass {
+  font-weight: 500;
+}
+.clr-log {
+  background-color: rgb(236, 241, 244);
+  font-weight: 500;
+  color: #566a7f;
+}
+
+.new-member-note {
+  color: #757575;
+  font-weight: 500;
+  font-size: 12px;
+}
+.reg-design {
+  text-decoration: none;
+  color: lightseagreen;
+}
+.mt-6 {
+  margin-top: 10rem;
+}
+.Signup-member-note {
+  color: #757575;
+  font-weight: 500;
+  font-size: 12px;
+}
+.privacy-policy {
+  text-decoration: none;
+}
+.checkbox-size {
+  scale: 1.2;
+  border-radius: 0.25em;
+}
+.forget-design {
+  text-decoration: none;
+  color: lightseagreen;
+  font-weight: 500;
+  font-size: 20px;
+}
+.pl-custom {
+  padding-left: 0%;
+}
+.pr-custom {
+  width: 32px;
+}
+.w-custom {
+  width: 35%;
+}
+.transitions {
+  transition: 0.3s;
+  animation: buttons 0.4s linear;
+}
+@keyframes buttons {
+  0% {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.mrvalidate-custom {
+  margin-right: 40px;
+}

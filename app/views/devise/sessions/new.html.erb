@@ -1,26 +1,40 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<head>
+  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+  <style>
+    body {
+    background-color: #f5f5f9;
+    }
+  </style>
+</head>
+<div class="container mt-6 ">
+  <div class="row ">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="shadow-sm p-5 mb-4 bg-white rounded ">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field form-group">
+            <%= f.label :email , class:"fw-custom-email-pass" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control mb-4" , placeholder:"user@example.com" , required:"true"  %>
+          </div>
+          <div class="field form-group">
+            <%= f.label :password , class:"fw-custom-email-pass" %><br />
+            <%= f.password_field :password, autocomplete: "current-password" , class:"form-control" , required:"true"  %>
+          </div>
+          <div>
+            <%= render "devise/shared/links" %>
+          </div>
+          <div class="actions form-group">
+            <%= f.submit "LOG IN" , class:"form-control clr-log mt-4 butt"  %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row ">
+        <div class="col-md-4"></div>
+        <div class="col-md-4  new-member-note">
+          New member? <%= link_to "Register" , new_user_registration_path , class:"reg-design" %> here
+        </div>
+        <div class="col-md-4"></div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
