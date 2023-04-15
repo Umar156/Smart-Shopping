@@ -2,19 +2,22 @@
   <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
   <style>
     body {
-    background-color: #f5f5f9;
+    background-color: #f6f6f7;
     }
   </style>
 </head>
-<div class="container mt-5 ">
+<div class="container mt-4 ">
   <div class="row ">
     <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-      <div class="shadow-sm p-5 mb-4 bg-white rounded ">
+    <div class="col-lg-6 col-md-12 col-12">
+      <div class="shadow-sm px-5 py-4 mb-3 bg-white rounded ">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="text-center pb-4">
+            <h3 class="change-font-family">Sign Up</h3>
+          </div>
           <div class="field form-group">
             <%= f.label :first_name , class:"fw-custom-email-pass" %>
-            <%= f.text_field :first_name, autofocus: true , class:"form-control  " %>
+            <%= f.text_field :first_name, autofocus: true , class:"form-control custom-shadow-box " %>
             <% if @user.errors[:first_name].any? %>
               <div class="text-danger">
                 <%= @user.errors[:first_name].first %>
@@ -23,7 +26,7 @@
           </div>
           <div class="field form-group">
             <%= f.label :last_name , class:"fw-custom-email-pass mt-3" %>
-            <%= f.text_field :last_name, autofocus: true , class:"form-control" %>
+            <%= f.text_field :last_name, autofocus: true , class:"form-control custom-shadow-box" %>
             <% if @user.errors[:last_name].any? %>
               <div class="text-danger">
                 <%= @user.errors[:last_name].first %>
@@ -32,38 +35,53 @@
           </div>
           <div class="field form-group">
             <%= f.label :email , class:"fw-custom-email-pass mt-3" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control " , placeholder:"user@example.com" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control custom-shadow-box " , placeholder:"user@example.com" %>
             <% if @user.errors[:email].any? %>
               <div class="text-danger">
                 <%= @user.errors[:email].first %>
               </div>
             <% end %>
           </div>
-          <div class="field form-group">
-            <%= f.label :contact_number , class:"fw-custom-email-pass mt-3" %>
-            <%= f.text_field :contact_number, autofocus: true , class:"form-control" , placeholder:"+920123456789" %>
-            <% if @user.errors[:contact_number].any? %>
-              <div class="text-danger">
-                <%= @user.errors[:contact_number].first %>
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-12">
+              <div class="field form-group">
+                <%= f.label :contact_number , class:"fw-custom-email-pass mt-3" %>
+                <%= f.text_field :contact_number, autofocus: true , class:"form-control custom-shadow-box" , placeholder:"+920123456789" %>
+                <% if @user.errors[:contact_number].any? %>
+                  <div class="text-danger">
+                    <%= @user.errors[:contact_number].first %>
+                  </div>
+                <% end %>
               </div>
-            <% end %>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12">
+              <div class="field form-group">
+                <%= f.label :Trade_role , class:"fw-custom-email-pass mt-3" %><br>
+                <%= f.select :role, ['Customer', 'Vendor' ],{prompt:"Select"}, autofocus: true, class:"form-control custom-shadow-box"%>
+                <% if @user.errors[:role].any? %>
+                  <div class="text-danger">
+                    <%= @user.errors[:role].first %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
           <div class="field form-group">
             <%= f.label :password , class:"fw-custom-email-pass mt-3" %>
-            <%= f.password_field :password, autocomplete: "new-password" , class:"form-control" , id:"password" , placeholder:"At least 6 characters" %>
+            <%= f.password_field :password, autocomplete: "new-password" , class:"form-control custom-shadow-box" , id:"password" , placeholder:"At least 6 characters" %>
             <% if @user.errors[:password].any? %>
               <div class="text-danger">
                 <%= @user.errors[:password].first %>
               </div>
             <% end %>
           </div>
-          <div class="progress mt-3">
+          <div class="progress mt-3 ">
             <div class="progress-bar" role="progressbar"  >
             </div>
           </div>
           <div class="field form-group">
             <%= f.label :password_confirmation , class:"fw-custom-email-pass mt-3" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control "%>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control custom-shadow-box"%>
             <% if @user.errors[:password_confirmation].any? %>
               <div class="text-danger">
                 <%= @user.errors[:password_confirmation].first %>
@@ -73,13 +91,13 @@
           <div class="field  ">
             <div class="row">
               <div class="col-1 pr-custom ">
-                <div class="form-group">
+                <div class="form-group ">
                   <%= f.check_box :terms_and_conditions ,class:"checkbox-size mt-3" %>
                 </div>
               </div>
               <div class="col-11 pl-custom">
-                <div class="form-group mt-2  ">
-                  I agree to <%= link_to "terms & conditions" , terms_condition_path , target: "_blank" , class:"privacy-policy " %>
+                <div class="form-group mt-2">
+                  I agree to <%= link_to "terms & conditions" , terms_condition_path , target: "_blank" , class:"privacy-policy custom-shadow-box " %>
                 </div>
               </div>
             </div>
@@ -90,7 +108,7 @@
             <% end %>
           </div>
           <div class="actions">
-            <%= f.submit "Sign up" , class:"form-control clr-log mt-3 " %>
+            <%= f.submit "Signup" , class:"form-control clr-log mt-3 "  %>
           </div>
         <% end %>
       </div>
@@ -120,6 +138,7 @@
     if (password.match(/(?=.{6,})([/\S/])/))strength++;
     if (password.match(/(?=.*[a-z])([/\S/])/))strength++;
     if (password.match(/(?=.*[!@#$%^&])([/\S/])/))strength++;
+
 
     switch (strength) {
   case 0:

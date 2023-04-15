@@ -1,0 +1,103 @@
+<style>
+  body {
+  background-color: #f6f6f7;
+  }
+</style>
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<% if @products.present?%>
+  <div  class="create-product">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-6">
+          <div class="form-group">
+            <h1 class="index-product-size ">Products</h1>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-6 add-product-button">
+          <%= link_to "Add product",new_product_path , class:"add-product-text no-underline" %>
+        </div>
+      </div>
+      <div class="shadow-sm   " style="background-color: #f9fafb;">
+        <div class="row product-headings-background">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <div class="form-group">
+              <h6 class="product-header text-center">Product</h6>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <div class="form-group">
+              <h6 class="product-header text-center">Price</h6>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <div class="form-group">
+              <h6 class="product-header text-center">Quantity</h6>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <div class="form-group">
+              <h6 class="product-header text-center">Action</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hr-top" >
+      </div>
+      <div class="shadow-sm  bg-white  ">
+        <div class="row text-center ">
+          <% @products.each do |pdt| %>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 ">
+              <div class="form-group p-2 custom-hover-product ">
+                <%= link_to pdt.name ,  edit_product_path(pdt) , class:"text-dark fw-name-custom no-underline "%>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+              <div class="form-group p-2 custom-hover-product">
+                <%=pdt.price %>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+              <div class="form-group p-2 custom-hover-product">
+                <%=pdt.quantity  %>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+              <div class="form-group p-2 custom-hover-product">
+                <%= link_to "Delete", product_path(pdt),data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this product!" }, class:"no-underline text-dark fw-name-custom" %>
+              </div>
+            </div>
+            <div class="hr-product-bottom " >
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div  class="create-product">
+    <div class="container ">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-6">
+          <div class="form-group">
+            <h1 class="index-product-size ">Products</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row shadow-sm  bg-white rounded p-5">
+        <div class="col-lg-3 col-md-3 ">
+        </div>
+        <div class="col-lg-6 col-md-6 ">
+          <div class="form-group text-center">
+            <img alt="" src="https://cdn.shopify.com/shopifycloud/web/assets/v1/67d1bd2ad29c4adc.svg" class="" role="presentation">
+            <h5>First up: what are you selling?</h5>
+            <p class="empty-product">Before you open your store, first you need some products.</p>
+            <div class=" add-product-button text-center">
+              <%= link_to "Add your products",new_product_path , class:"add-product-text no-underline" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>

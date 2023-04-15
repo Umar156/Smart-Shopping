@@ -1,0 +1,29 @@
+      <!-- Topbar -->
+<div class="container">
+  <div class="row py-3  ">
+    <div class="col-lg-4 col-md-12 col-12">
+      <!-- Top Left -->
+      <div class="form-group ">
+        <i class="fa fa-envelope top-icon-color"></i>
+        <span class="top-bar-style">smartshop@shophub.com</span>
+      </div>
+      <!--/ End Top Left -->
+    </div>
+    <div class="col-lg-4 col-md-12 col-12"></div>
+    <div class="col-lg-4 col-md-12 col-12 ">
+      <!-- Top Right -->
+      <div class="form-group text-lg-end ">
+        <% if user_signed_in? %>
+          <i class="fa fa-sign-out top-icon-color "></i><%= link_to "Logout" ,destroy_user_session_path ,data: {turbo_method: :delete,turbo_confirm: "Are you sure ?"} , class:"p-1 no-underline top-bar-style credential-hover"%>
+        <% else %>
+          <i class="fa fa-sign-in top-icon-color"></i><%= link_to "Login" , new_user_session_path , class:"p-1 no-underline top-bar-style credential-hover "%>
+          <i class="fa fa-sign-out top-icon-color padding-top-right"></i> <%= link_to "Sign Up" , new_user_registration_path , class:"no-underline top-bar-style credential-hover"%>
+        <%end%>
+      </div>
+      <!--/ End Top Right -->
+    </div>
+  </div>
+</div>
+<!-- End Topbar -->
+<div class="hr-top" >
+</div>

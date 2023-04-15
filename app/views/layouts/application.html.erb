@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SmartShopping</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Smart Shopping</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='copyright' content=''>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="<%= asset_path('favicon.png')  %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://kit.fontawesome.com/4177f37136.js" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <h2 class="text-white">Smart Shop</h2>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto ">
-          <li class="nav-item active  ">
-            <%= link_to "Home" , root_path , class:"text-white no-underline"%>
-          </li>
-        </ul>
-        <% if user_signed_in? %>
-          <%= link_to "Sign Out" ,destroy_user_session_path ,data: {turbo_method: :delete,turbo_confirm: "Are you sure ?"} , class:"btn btn-outline-success my-2 my-sm-0"%>
-        <% else %>
-          <%= link_to "Sign In" , new_user_session_path , class:"btn btn-outline-success my-2 my-sm-0 float-right"%>
-          <%= link_to "Sign Up" , new_user_registration_path , class:"btn btn-outline-success my-2 my-sm-0"%>
-        <%end%>
+  <body >
+    <!-- Header -->
+    <header >
+      <%= yield :topbar %>
+      <div class="container">
+        <div class="row custom-padding-search-bar">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+            <!-- Logo -->
+            <div class="form-group responsive-logo ">
+              <%= link_to root_path do %>
+                <%= image_tag('logos/my_logo.png', alt: 'Logo' ,class:"logo-design" )  %>
+              <% end %>
+            </div>
+            <!--/ End Logo -->
+          </div>
+          <div class="col-lg-8 col-md-7 col-sm-6 col-6">
+            <!-- Search Form -->
+            <div class=" form-group ">
+              <div class="custom-search-design ">
+                <div class="input-box">
+                  <input type="text"  class="search-focus "  placeholder="Search Products Here..."   />
+                  <button type="submit" class="button" >Search</button>
+                </div>
+              </div>
+            </div>
+            <!--/ End Search Form -->
+          </div>
+          <%# Cart Account %>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div class="form-group cart-account-design ">
+              <i class=" fa fa-shopping-cart cart-design" ></i>
+              <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
+              <% if user_signed_in?   %>
+                <% if current_user.role == 'Vendor'  %>
+                  <span class="sign-in-design">Vendor</span>
+                <% elsif current_user.role == 'Admin' %>
+                  <span class="sign-in-design">Admin</span>
+                <% else %>
+                  <span class="sign-in-design"> Customer</span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <%# end Cart Account %>
+        </div>
       </div>
-    </nav>
+    </header>
+    <%# Navbar %>
+    <div class="navbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= link_to "Home" , root_path , class:"no-underline custom-navlinks" %>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= yield %>
     <div class="container  ">
       <div class="row justify-content-center">
@@ -33,11 +79,7 @@
         <div class="col-md-6 ">
           <div class="form-group ">
             <% flash.each do |key, value| %>
-              <% if key == "notice" %>
-                <div class="alert alert-success w-custom transitions" id="show" >
-                  <%= value %>
-                </div>
-              <% elsif key == "alert" %>
+              <% if key == "alert" %>
                 <div class="alert alert-danger w-custom mt-4 transitions" id="show">
                   <%= value  %>
                 </div>
@@ -51,7 +93,6 @@
   <script>
     setTimeout(() => {
       show.style.display="none";
-
     }, 5000);
   </script>
 </html>

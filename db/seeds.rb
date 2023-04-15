@@ -8,4 +8,4 @@
 
 
 
-   User.create(email: "umar@gmail.com" , password: 123456)
+   User.create(email: "umer@gmail.com" , password: 123456 , role:"Admin" , first_name:"umar" , last_name:"hafeez" , contact_number:"+923096220762")
