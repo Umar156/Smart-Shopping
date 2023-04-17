@@ -50,6 +50,9 @@
           <% @products.each do |pdt| %>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3 ">
               <div class="form-group p-2 custom-hover-product ">
+                <% if pdt.avatar.attached? %>
+                  <%=image_tag pdt.avatar , class:"custom-image"%>
+                <%end%>
                 <%= link_to pdt.name ,  edit_product_path(pdt) , class:"text-dark fw-name-custom no-underline "%>
               </div>
             </div>
