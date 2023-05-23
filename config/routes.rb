@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "cart" , to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   get 'vendors/index'
   get 'admins/index'
   # get 'products/index'
@@ -7,6 +10,8 @@ Rails.application.routes.draw do
   root 'homes#index'
   resources:users
   resources:products
+  
+
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @products = Product.new(product_params) 
     if @products.save
       redirect_to products_path
+      
     else
       render :new, status: :unprocessable_entity
     end

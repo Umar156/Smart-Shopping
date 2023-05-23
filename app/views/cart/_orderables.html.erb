@@ -1,0 +1,138 @@
+<div  class="create-product cart-product-top">
+  <div class="container">
+    <div  style="background-color:#F7941D; padding:12px 0px;">
+      <div class="row product-headings-background">
+        <div class="col-md-2">
+          <div class="form-group">
+            <h6 class="product-header text-center">PRODUCT</h6>
+          </div>
+        </div>
+        <div class=" col-md-3">
+          <div class="form-group">
+            <h6 class="product-header text-center">NAME</h6>
+          </div>
+        </div>
+        <div class=" col-md-2">
+          <div class="form-group">
+            <h6 class="product-header text-center">PRICE</h6>
+          </div>
+        </div>
+        <div class=" col-md-2">
+          <div class="form-group">
+            <h6 class="product-header text-center">QUANTITY</h6>
+          </div>
+        </div>
+        <div class=" col-md-2">
+          <div class="form-group">
+            <h6 class="product-header text-center">TOTAL</h6>
+          </div>
+        </div>
+        <div class=" col-md-1">
+          <div class="form-group">
+            <h6 class="product-header text-center"><i class="fa fa-trash-o"></i></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-sm  bg-white  ">
+      <% @cart.orderables.each do |orderable|%>
+        <% product = orderable.product%>
+        <div id="<%= "cart-#{product.id}" %>">
+          <div class="row text-center ">
+            <div class="col-md-2">
+              <div class="form-group all-itself-cart  ">
+                <%=image_tag product.avatar, class:"cart-image-design " %>
+              </div>
+            </div>
+            <div class=" col-md-3">
+              <div class="form-group cart-name-add all-itself-cart ">
+                <h6 class="pt-3"><%= product.name %></h6>
+                <p style="text-align: justify;" ><%= product.description%></p>
+              </div>
+            </div>
+            <div class=" col-md-2">
+              <div class="form-group all-itself-cart">
+                <h6 class="pt-5">Rs <%=product.price%></h6>
+              </div>
+            </div>
+            <div class=" col-md-2">
+              <div class="form-group all-itself-cart">
+                <p class="pt-4 quantity-whole">
+                  <%= form_with(url:cart_add_path) do |f| %>
+                    <%= f.hidden_field :id, value: product.id%>
+                    <%= f.number_field :quantity,value: orderable.quantity, min: 0 , class:"form-control cart-quantity-design text-center rounded-0 border-color", style:"box-shadow:none; " %>
+                    <div class="row", style="padding-left:9px;">
+                      <div class="col-auto", style="padding-right:0;">
+                        <i class="fa fa-shopping-cart "></i>
+                      </div>
+                      <div class="col ", style="padding-left:1px;">
+                        <%=f.submit "Add to cart" , class:"form-control border-0 pt-1 crt-hover", style:"box-shadow:none; padding-left:0; background:none; text-align:left; font-weight: 500; font: 16px Poppins, sans-serif;" %>
+                      </div>
+                    </div>
+                  <%end%>
+                </p>
+              </div>
+            </div>
+            <div class=" col-md-2">
+              <div class="form-group all-itself-cart">
+                <h6 class="pt-5"> Rs <%= orderable.total%></h6>
+              </div>
+            </div>
+            <div class=" col-md-1">
+              <div class="form-group all-itself-cart">
+                <%= form_with(url:cart_remove_path) do |f| %>
+                  <%= f.hidden_field :id,value: orderable.id%>
+                  <%= button_tag type: "submit", class: "form-control border-0 cart-delete-button pt-5" do %>
+                    <%= content_tag(:i, "", class: "fa fa-trash-o mr-2").html_safe %>
+                  <% end %>
+                <%end%>
+              </div>
+            </div>
+            <div class="hr-product-bottom " >
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class=" col-6">
+          <div class="form-group cart-total-info ">
+            <p >Cart Subtotal</p>
+            <p>Shipping</p>
+          </div>
+        </div>
+        <div class=" col-6">
+          <div class="form-group text-end cart-total-info">
+            <p> Rs <%= @cart.total%></p>
+            <p>Free</p>
+          </div>
+        </div>
+      </div>
+      <div class="hr-product-bottom " >
+      </div>
+      <div class="row pt-2">
+        <div class=" col-6">
+          <div class="form-group cart-total-info">
+            <p>You Pay</p>
+          </div>
+        </div>
+        <div class=" col-6">
+          <div class="form-group text-end cart-total-info">
+            <p> Rs <%= @cart.total%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

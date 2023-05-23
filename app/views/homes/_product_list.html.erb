@@ -1,0 +1,22 @@
+<div >
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-3">
+          <%= form_with(url:cart_add_path) do |f| %>
+            <div class="card border-0 ">
+              <%=image_tag product.avatar , class:"card-image-top" %>
+              <%= f.hidden_field :id,value: product.id%>
+              <%= f.hidden_field :quantity,value: 1, min: 1%>
+              <%= f.submit "ADD TO CART" , class:"add-cart-button"%>
+              <div class="card-body "style="padding-left:0px; ">
+                <h2 class="card-titel"><%= product.name %></h2>
+                <h5 >Rs <%=product.price%></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

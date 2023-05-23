@@ -1,3 +1,98 @@
 <% content_for :topbar do %>
   <%= render partial: 'partials/topbar' %>
 <% end %>
+<div class="whole-slider-design" id="slider-design">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-9">
+        <div class=" slider">
+          <%= image_tag 'caro-1.jpeg' ,id:"first-slide"  %>
+          <%= image_tag('caro-2.jpeg' )   %>
+          <%= image_tag('caro-3.jpeg' )  %>
+          <%= image_tag('caro-4.jpeg' )  %>
+          <%= image_tag('caro-5.jpeg' )  %>
+          <%= image_tag('caro-6.jpeg' )  %>
+          <%= image_tag('caro-7.jpeg' )  %>
+          <%= image_tag('caro-8.jpeg' )  %>
+          <%= image_tag('caro-9.jpeg' )  %>
+          <%= image_tag('caro-10.jpeg' )  %>
+          <%= image_tag('caro-11.jpeg' )  %>
+          <%= image_tag('caro-12.jpeg' )  %>
+          <%= image_tag('caro-13.jpeg' )  %>
+          <%= image_tag('caro-14.jpeg' )  %>
+          <%= image_tag('caro-15.jpeg' )  %>
+          <%= image_tag('caro-16.jpeg' )  %>
+          <%= image_tag('caro-17.jpeg' )  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cart-list">
+  <div class="container cart-sec px-0">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="form-group text-center">
+          <h2 class="section-title">Trending Item</h2>
+        </div>
+        <div class="small-line">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+        <div class="form-group main-trend text-center">
+          <%= link_to "MAN", root_path  ,class:"no-underline trend-item-design  "%>
+          <%= link_to "WOMAN", root_path  ,class:"no-underline  trend-item-design  "%>
+          <%= link_to "KIDS", root_path  ,class:"no-underline trend-item-design   "%>
+          <%= link_to "HEALTH", root_path  ,class:"no-underline  trend-item-design  "%>
+          <%= link_to "ACCESSORIES", root_path  ,class:"no-underline  trend-item-design  "%>
+        </div>
+      </div>
+    </div>
+    <div >
+      <%= render 'homes/product_list' %>
+    </div>
+  </div>
+</div>
+<div class="hot-item-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="form-group text-center">
+          <h2 class="section-title">Hot Item</h2>
+        </div>
+        <div class="small-line">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var images = [];
+      document.querySelectorAll(".slider img").forEach(function(img) {
+        var image = new Image();
+        image.src = img.src;
+        images.push(image);
+      });
+      document.querySelector("#first-slide").classList.add("active");
+      var index = 0;
+      setInterval(function() {
+        var current = document.querySelector(".slider img.active");
+        current.classList.remove("active");
+        index = (index + 1) % images.length;
+        var next = document.querySelectorAll(".slider img")[index];
+        next.classList.add("active");
+      }, 3000);
+     var colors = ['#c9c0ae', '#ffdddb','#f5b9c1', '#345b78','#f85605','#a31926','#f85506','#edd47a','#106126','#359683','#359683','#f85707','#9c9ba0','#359683','#1e9541','#f8c3cd','#c8f9f5']
+      var slider = document.getElementById('slider-design');
+      var index = 0;
+      setInterval(function() {
+        slider.style.backgroundColor = colors[index];
+        index = (index + 1) % colors.length;
+      }, 3000);
+</script>

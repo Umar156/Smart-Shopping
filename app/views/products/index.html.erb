@@ -19,7 +19,7 @@
           <%= link_to "Add product",new_product_path , class:"add-product-text no-underline" %>
         </div>
       </div>
-      <div class="shadow-sm   " style="background-color: #f9fafb;">
+      <div class="shadow-sm  " style="background-color:#F7941D; padding:12px 0px;">
         <div class="row product-headings-background">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
             <div class="form-group">
@@ -43,8 +43,6 @@
           </div>
         </div>
       </div>
-      <div class="hr-top" >
-      </div>
       <div class="shadow-sm  bg-white  ">
         <div class="row text-center ">
           <% @products.each do |pdt| %>
@@ -56,18 +54,18 @@
                 <%= link_to pdt.name ,  edit_product_path(pdt) , class:"text-dark fw-name-custom no-underline "%>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-              <div class="form-group p-2 custom-hover-product">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 custom-hover-product">
+              <div class="form-group p-2  pt-3">
                 <%=pdt.price %>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-              <div class="form-group p-2 custom-hover-product">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 custom-hover-product">
+              <div class="form-group p-2  pt-3">
                 <%=pdt.quantity  %>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-              <div class="form-group p-2 custom-hover-product">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 custom-hover-product">
+              <div class="form-group p-2  pt-3">
                 <%= link_to "Delete", product_path(pdt),data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this product!" }, class:"no-underline text-dark fw-name-custom" %>
               </div>
             </div>
@@ -103,4 +101,5 @@
         </div>
       </div>
     </div>
-  <%end%>
+  </div>
+<%end%>

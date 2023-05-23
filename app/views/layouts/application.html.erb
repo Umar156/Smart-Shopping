@@ -17,6 +17,18 @@
   </head>
   <body >
     <!-- Header -->
+    <!-- Preloader -->
+    <!--
+    <div class="preloader" id="preload">
+      <div class="preloader-inner">
+        <div class="preloader-icon">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    -->
+    <!-- End Preloader -->
     <header >
       <%= yield :topbar %>
       <div class="container">
@@ -45,7 +57,9 @@
           <%# Cart Account %>
           <div class="col-lg-2 col-md-3 col-sm-4 col-6">
             <div class="form-group cart-account-design ">
-              <i class=" fa fa-shopping-cart cart-design" ></i>
+              <%= link_to cart_path, style:"color:#333;" do %>
+                <i class="fa fa-shopping-cart cart-design" ></i>
+              <% end %>
               <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
               <% if user_signed_in?   %>
                 <% if current_user.role == 'Vendor'  %>
@@ -63,15 +77,244 @@
       </div>
     </header>
     <%# Navbar %>
-    <div class="navbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <%= link_to "Home" , root_path , class:"no-underline custom-navlinks" %>
+    <% if current_page?(root_path) %>
+      <div class="navbar " style="padding:0;">
+        <div class="container " style="display:block;">
+          <div class="row ">
+            <div class="col-lg-3 cat-main" style="padding-right:0;" >
+              <h3 class="cat-heading mb-0 "><i class="fa fa-bars"></i>CATEGORIES</h3>
+              <div class="bg-white bg-main-design">
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Groceries & Pets", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Beverages", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Fresh Products" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Breakfast,Choco " , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Food Staples" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Dairy & Chilled" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Laundry " , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Cat" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Dog" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Fish" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Frozen Food" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Maternity Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Health & Beauty", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design ">
+                      <li> <%= link_to "Bath & Body", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Beauty Tools" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Fragrances" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Hair Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Makeup" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Men's Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Personal Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Skin Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Sexual Wellness" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Medical Supplies" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Men's Fashion", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "T-Shirts & Tanks", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Shirts & Polo" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Pants & Jeans" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Shorts, Joggers & Sweats" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Kurtas & Shalwar Kameez" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Winter Clothing" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Inner Wear" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Shoes" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Boy's Clothing" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Boy's Shoes" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Boy's Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Women's Fashion", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Unstitched Fabric", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Kurtas & Shalwar Kameez" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Muslim Wear" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Tops" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Bras, Panties & Lingerie" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Sleepwear & Innerwear" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Pants, Jeans & Leggings" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Dresses & Skirts" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Winter Clothing" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Shoes" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Girls Clothing" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Girls Shoes" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Mother & Baby", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Milk Formula & Baby Food", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Diapering & Potty" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Feeding" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Baby Gear" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Baby & Toddler Toys" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Remote Control & Vehicles" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Sports & Outdoor Play" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Nursery" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Baby Personal Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Clothing & Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Toys & Games" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Maternity Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Home & Lifestyle", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Bath", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Bedding" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Decor" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Furniture" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Kitchen & Dining" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Lighting" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Laundry & Cleaning" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Tools, DIY & Outdoor" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Stationery & Craft" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Media, Music & Books" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Electronic Device", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Smart Phones", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Feature Phones" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Tablets" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Monitors" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Laptops" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Desktops" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Smart Watches" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Gaming Consoles" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Cameras & Drones" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Security Cameras" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Landline Phones" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Electronic Accessories", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right accessor " aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Mobile Accessories", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Headphones & Headsets" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Wearable" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Camera Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Computer Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Storage" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Printers" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Computer Components" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Portable Speakers" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Network Components" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Gaming Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Monitors & Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "TV & Home Appliances", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right accessor " aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Air Conditioner", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Televisions" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Refrigerators & Freezers" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Home Audio & Theater" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Washing Machine" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Kitchen Appliances" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Cooling & Heating" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Irons & Garment Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Generator, UPS & Solar" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Projectors & Players" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "TV Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Vacuums & Floor Care" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Sports & Outdoor", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Exercise & Fitness", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Supplements" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Shoes & Clothing" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Team Sports" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Racket Sports" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Outdoor Recreation" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Fitness Gadgets" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Sports Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="main-category ">
+                  <li>
+                    <%= link_to "Watches, Bags & Jewellery", root_path  ,class:"no-underline sub-cat-design  "%>
+                    <i class="fa fa-angle-right bag-jewe-design " aria-hidden="true"></i>
+                    <ul class="sub-category bg-white bg-design">
+                      <li> <%= link_to "Men's Watches", root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Women's Watches" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Kid's Watches" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Womens Bags" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Mens Bags" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Luggage & Suitcase" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Womens Jewellery" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Mens Jewellery" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Mens Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Women's Accessories" , root_path , class:"no-underline sub-inner-design"%></li>
+                      <li> <%= link_to "Sunglasses & Eyewear" , root_path , class:"no-underline sub-inner-design"%></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-9 mt-3  ">
+              <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% else %>
+      <div class="navbar" style="padding:0;">
+        <div class="container" style="display:block;">
+          <div class="row ">
+            <div class="col-lg-3 cat-main" >
+              <h3 class="cat-heading  "><i class="fa fa-bars"></i>CATEGORIES</h3>
+            </div>
+            <div class="col-lg-9 mt-3  ">
+              <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
     <%= yield %>
     <div class="container  ">
       <div class="row justify-content-center">
@@ -92,7 +335,11 @@
   </body>
   <script>
     setTimeout(() => {
-      show.style.display="none";
-    }, 5000);
+      preload.style.display = "none";
+    }, 2000);
+
+    setTimeout(() => {
+      show.style.display = "none";
+    }, 7000);
   </script>
 </html>
