@@ -1,6 +1,75 @@
 <% content_for :topbar do %>
   <%= render partial: 'partials/topbar' %>
 <% end %>
+<div class="container">
+  <div class="row custom-padding-search-bar">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+      <!-- Logo -->
+      <div class="form-group responsive-logo ">
+        <%= link_to root_path do %>
+          <%= image_tag('logos/my_logo.png', alt: 'Logo' ,class:"logo-design" )  %>
+        <% end %>
+      </div>
+      <!--/ End Logo -->
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-6 col-6">
+      <!-- Search Form -->
+      <%= form_for "",url:root_path, role:"search", method: :get do %>
+        <div class=" form-group ">
+          <div class="custom-search-design ">
+            <div class="input-box">
+              <%= text_field_tag :search, @search_term, placeholder:"Search Products Here...",class:"search-focus " %>
+              <button type="submit" class="button" >Search</button>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <!--/ End Search Form -->
+    </div>
+    <%# Cart Account %>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="form-group cart-account-design" style="text-align:right;">
+        <%= link_to cart_path, style:"color:#333;" do %>
+          <i class="fa fa-shopping-cart cart-design" ></i>
+        <% end %>
+        <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
+        <% if user_signed_in?   %>
+          <% if current_user.role == 'Vendor'  %>
+            <span class="sign-in-design">Vendor</span>
+          <% elsif current_user.role == 'Admin' %>
+            <span class="sign-in-design">Admin</span>
+          <% else %>
+            <span class="sign-in-design"> Customer</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# end Cart Account %>
+  </div>
+</div>
+</header>
+<%# Navbar %>
+<div class="navbar " style="padding:0;">
+  <div class="container " style="display:block;">
+    <div class="row ">
+      <div class="col-lg-3 cat-main" style="padding-right:0;" >
+        <h3 class="cat-heading mb-0 "><i class="fa fa-bars"></i>CATEGORIES</h3>
+        <div class="bg-white bg-main-design">
+          <ul class="main-category ">
+            <% @category.each do |cg|%>
+              <li class="dynamic-category-design">
+                <%= link_to cg.name, category_products_path(cg)  ,class:"no-underline sub-cat-design  "%>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9 mt-3  ">
+        <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="whole-slider-design" id="slider-design">
   <div class="container">
     <div class="row">
@@ -8,7 +77,7 @@
       </div>
       <div class="col-lg-9">
         <div class=" slider">
-          <%= image_tag 'caro-1.jpeg' ,id:"first-slide"  %>
+          <%= image_tag 'caro-1.jpeg', id: "first-slide" %>
           <%= image_tag('caro-2.jpeg' )   %>
           <%= image_tag('caro-3.jpeg' )  %>
           <%= image_tag('caro-4.jpeg' )  %>
@@ -46,11 +115,28 @@
       </div>
       <div class="col-8">
         <div class="form-group main-trend text-center">
-          <%= link_to "MAN", root_path  ,class:"no-underline trend-item-design  "%>
-          <%= link_to "WOMAN", root_path  ,class:"no-underline  trend-item-design  "%>
-          <%= link_to "KIDS", root_path  ,class:"no-underline trend-item-design   "%>
-          <%= link_to "HEALTH", root_path  ,class:"no-underline  trend-item-design  "%>
-          <%= link_to "ACCESSORIES", root_path  ,class:"no-underline  trend-item-design  "%>
+          <% @category.each do |cg| %>
+            <% category_name = cg.name == "Men's Fashion" ? "MAN" : cg.name %>
+            <% if ["MAN", "WOMAN", "KIDS", "HEALTH", "ACCESSORIES"].include?(category_name) %>
+              <%= link_to category_name, category_products_path(cg),class:"no-underline trend-item-design" %>
+            <% end %>
+            <% category_name = cg.name == "Women's Fashion" ? "WOMAN" : cg.name %>
+            <% if ["MAN", "WOMAN", "KIDS", "HEALTH", "ACCESSORIES"].include?(category_name) %>
+              <%= link_to category_name, category_products_path(cg),class:"no-underline trend-item-design" %>
+            <% end %>
+            <% category_name = cg.name == "Mother & Baby" ? "KIDS" : cg.name %>
+            <% if ["MAN", "WOMAN", "KIDS", "HEALTH", "ACCESSORIES"].include?(category_name) %>
+              <%= link_to category_name, category_products_path(cg),class:"no-underline trend-item-design" %>
+            <% end %>
+            <% category_name = cg.name == "Health & Beauty" ? "HEALTH" : cg.name %>
+            <% if ["MAN", "WOMAN", "KIDS", "HEALTH", "ACCESSORIES"].include?(category_name) %>
+              <%= link_to category_name, category_products_path(cg),class:"no-underline trend-item-design" %>
+            <% end %>
+            <% category_name = cg.name == "Electronic Accessories" ? "ACCESSORIES" : cg.name %>
+            <% if ["MAN", "WOMAN", "KIDS", "HEALTH", "ACCESSORIES"].include?(category_name) %>
+              <%= link_to category_name, category_products_path(cg),class:"no-underline trend-item-design" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

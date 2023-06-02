@@ -1,8 +1,3 @@
-<style>
-  body {
-  background-color: #f6f6f7;
-  }
-</style>
 <% content_for :topbar do %>
   <%= render partial: 'partials/topbar' %>
 <% end %>
@@ -73,69 +68,21 @@
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <h1 class="index-product-size "><%= @products.name%></h1>
+          <h1 class="index-product-size ">Add category</h1>
         </div>
       </div>
     </div>
-    <%=form_with model: @products do |pdt|%>
+    <%=form_with url: category_path do |ctg|%>
       <div class="row ">
         <div class="col-lg-3">
         </div>
-        <div class="col-lg-6 shadow-sm  bg-white rounded p-4">
+        <div class="col-lg-6 shadow-sm  bg-white rounded p-4" style="margin:0 0 20px 0px;">
           <div class="form-group ">
-            <%= pdt.label :Title%>
-            <%= pdt.text_field:name, placeholder: "Short sleeve t-shirt", class:"form-control", style:"box-shadow:none;" %>
-            <% if @products.errors[:name].any? %>
+            <%= ctg.label :Title%>
+            <%= ctg.text_field:name, class:"form-control", style:"box-shadow:none;" %>
+            <% if @category.errors[:name].any? %>
               <div class="text-danger">
-                <%= @products.errors[:name].first %>
-              </div>
-            <% end %>
-          </div>
-          <div class="form-group ">
-            <%= pdt.label :Description , class:"custom-description-product"%>
-            <%= pdt.text_area:description, class:"form-control custom-textarea", style:"box-shadow:none;" %>
-            <% if @products.errors[:description].any? %>
-              <div class="text-danger">
-                <%= @products.errors[:description].first %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6 shadow-sm  bg-white rounded p-4" style="margin:20px 0px;">
-          <div class="form-group  ">
-            <%= pdt.label :Media %>
-            <%= pdt.file_field :avatar,class:"form-control",  style:"box-shadow:none;" %>
-            <% if @products.errors[:avatar].any? %>
-              <div class="text-danger">
-                <%= @products.errors[:avatar].first %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6 shadow-sm  bg-white rounded p-4" style="margin:20px 0px;">
-          <div class="form-group  ">
-            <%= pdt.label :Pricing , class:"custom-description-product"%>
-            <%= pdt.text_field:price, placeholder: "Rs  0.00", class:"form-control", style:"box-shadow:none;" %>
-            <% if @products.errors[:price].any? %>
-              <div class="text-danger">
-                <%= @products.errors[:price].first %>
-              </div>
-            <% end %>
-          </div>
-          <div class="form-group ">
-            <%= pdt.label :Quantity , class:"custom-description-product" %>
-            <%= pdt.number_field :quantity, class:"form-control", style:"box-shadow:none;" , step: 1, placeholder: "0" %>
-            <% if @products.errors[:quantity].any? %>
-              <div class="text-danger">
-                <%= @products.errors[:quantity].first %>
+                <%= @category.errors[:name].first %>
               </div>
             <% end %>
           </div>
@@ -146,20 +93,20 @@
         </div>
         <div class="col-lg-6">
           <div class="row ">
-            <div class="col-lg-3 col-md-3 col-sm-3"></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 ">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3 ">
               <div class="form-group  ">
-                <%=link_to"Back",products_path , class:"no-underline  text-center discard-design form-control"%>
+                <%=link_to"Discard",category_path , class:"no-underline  text-center discard-design form-control"%>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="col-sm-3">
               <div class="form-group ">
-                <%= pdt.submit "Update Product",  class:"form-control discard-design "  %>
+                <%= ctg.submit "Save",  class:"form-control discard-design "  %>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <%end%>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,254 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<div class="container">
+  <div class="row custom-padding-search-bar">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+      <!-- Logo -->
+      <div class="form-group responsive-logo ">
+        <%= link_to root_path do %>
+          <%= image_tag('logos/my_logo.png', alt: 'Logo' ,class:"logo-design" )  %>
+        <% end %>
+      </div>
+      <!--/ End Logo -->
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-6 col-6">
+      <!-- Search Form -->
+      <%= form_for "",url:root_path, role:"search", method: :get do %>
+        <div class=" form-group ">
+          <div class="custom-search-design ">
+            <div class="input-box">
+              <%= text_field_tag :search, @search_term, placeholder:"Search Products Here...",class:"search-focus " %>
+              <button type="submit" class="button" >Search</button>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <!--/ End Search Form -->
+    </div>
+    <%# Cart Account %>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="form-group cart-account-design" style="text-align:right;">
+        <%= link_to cart_path, style:"color:#333;" do %>
+          <i class="fa fa-shopping-cart cart-design" ></i>
+        <% end %>
+        <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
+        <% if user_signed_in?   %>
+          <% if current_user.role == 'Vendor'  %>
+            <span class="sign-in-design">Vendor</span>
+          <% elsif current_user.role == 'Admin' %>
+            <span class="sign-in-design">Admin</span>
+          <% else %>
+            <span class="sign-in-design"> Customer</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# end Cart Account %>
+  </div>
+</div>
+</header>
+<%# Navbar %>
+<div class="navbar" style="padding:0;">
+  <div class="container" style="display:block;">
+    <div class="row ">
+      <div class="col-lg-3 cat-main" >
+        <h3 class="cat-heading  "><i class="fa fa-bars"></i>CATEGORIES</h3>
+      </div>
+      <div class="col-lg-9 mt-3  ">
+        <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="shop checkout section">
+  <div class="container cart-container-design">
+    <%= form_with url: @root_path do |chkp|%>
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="checkout-form">
+            <h2 class="checkout-main-heading">Make Your Checkout Here</h2>
+            <p class="sub-head-checkout">Please register in order to checkout more quickly</p>
+            <!-- Form -->
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%=chkp.label:Full_Name , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%=chkp.text_field:full_name, class:"form-control checkout-input-design" %>
+                  <% if @checkouts.errors[:full_name].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:full_name].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%=chkp.label:email , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%= chkp.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control checkout-input-design" , placeholder:"user@example.com"%>
+                  <% if @checkouts.errors[:email].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:email].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%= chkp.label :Phone_Number , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%= chkp.text_field :phone_number, autofocus: true , class:"form-control checkout-input-design" , placeholder:"+920123456789" %>
+                  <% if @checkouts.errors[:phone_number].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:phone_number].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%= chkp.label :Province , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%= chkp.select :province, ['Balochistan', 'Gilgit-Baltistan' , 'Islamabad' , 'Khyber Pakhtunkhwa' , 'Punjab' , 'Sindh' ],{prompt:"Select"}, autofocus: true, class:"form-control checkout-input-design", id: 'slct1', onchange: "populate('slct1', 'slct2')"%>
+                  <% if @checkouts.errors[:province].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:province].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%= chkp.label :City , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%= chkp.select :city,[],{prompt:"Select"}, autofocus: true, class:"form-control checkout-input-design", id: 'slct2'%>
+                  <% if @checkouts.errors[:city].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:city].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <%= chkp.label :Address , class:"checkout-full-name"%><span class="checkout-steric">*</span>
+                  <%=chkp.text_field:address, class:"form-control checkout-input-design" %>
+                  <% if @checkouts.errors[:address].any? %>
+                    <div class="text-danger">
+                      <%= @checkouts.errors[:address].first %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12 payment-option-design">
+          <div class="form-group">
+            <h2 class="checkout-total-cart">CART TOTALS</h2>
+          </div>
+          <div class="cart-small-line">
+          </div>
+          <div class="row">
+            <div class=" col-6">
+              <div class="form-group checkout-total-credential total-checkout-margin">
+                <p >Sub Total</p>
+                <p>Shipping</p>
+              </div>
+            </div>
+            <div class=" col-6">
+              <div class="form-group text-end checkout-total-credential total-checkout-margin">
+                <p> Rs <%= @cart.total%></p>
+                <p>Free</p>
+              </div>
+            </div>
+          </div>
+          <div class="hr-product-bottom " >
+          </div>
+          <div class="row pt-2">
+            <div class=" col-6">
+              <div class="form-group checkout-total-credential cart-total-checkout-bottom">
+                <p>Total</p>
+              </div>
+            </div>
+            <div class=" col-6">
+              <div class="form-group text-end checkout-total-credential cart-total-checkout-bottom">
+                <p> Rs <%= @cart.total%></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <h2 class="checkout-total-cart">PAYMENTS</h2>
+          </div>
+          <div class="cart-small-line">
+          </div>
+          <div class="pay-method ">
+            <%= chkp.select :payment_method, ['JazzCash', 'Easypaisa' , 'Visa/Master Card' , 'Cash On Delivery'],{prompt:"Select"}, autofocus: true, class:"form-control   checkout-input-design "%>
+            <% if @checkouts.errors[:payment_method].any? %>
+              <div class="text-danger">
+                <%= @checkouts.errors[:payment_method].first %>
+              </div>
+            <% end %>
+            <% if :payment_method == "JazzCash"%>
+              <% redirect_to jazzcash_path%>
+            <% end %>
+          </div>
+          <div>
+            <%= image_tag('payment.jpeg', alt: 'Payment option' ,class:"payment-card-design" )  %>
+          </div>
+          <div class="form-group " >
+            <%= chkp.submit "PLACE ORDER" , class:" form-control check-button-final " %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+<script>
+  function populate(sourceId, targetId) {
+    var sourceElement = document.getElementById(sourceId);
+    var targetElement = document.getElementById(targetId);
+
+    targetElement.innerHTML = '';
+
+    var selectedProvince = sourceElement.value;
+
+    var cities = getCities(selectedProvince);
+    var defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Select City';
+    targetElement.appendChild(defaultOption);
+    cities.forEach(function(city) {
+      var option = document.createElement('option');
+      option.value = city;
+      option.text = city;
+      targetElement.appendChild(option);
+    });
+  }
+  function getCities(province) {
+    if (province === 'Balochistan')
+    {
+      return ['Awaran', 'Barkhan' , 'Chaman' , 'Dalbandin','Dera Allahyar' , 'Dera Bugti','Dera Murad Jamali','Dhadar','Gwadar', 'Harnai','Hub','Jafarabad','Kallat','Kanozai','Kharan','Khuzdar','Kohlu','Kuchlak','Lasbela','Loralai','Mastung','Miri Kalat Kech','Mithani','Muslim Bagh','Nushki','Panj Gur','Pasni','Pishin','Qila Abdullah','Qila Saifullah','Quetta - Airport','Quetta - Alamdar Road','Quetta - Bazaar Area','Quetta - Brewery Road','Quetta - Cantt','Quetta - Nawakilli','Quetta - Pishin Stop','Quetta - Samungli','Quetta - Sariab','Quetta - Sattlite Town','Quetta - Zarghoon Road','Sibbi','Sorab','Sui','Taftan','Turbat','Usta Mohammad','Uthal','Winder','Zhob','Zia Abad','Ziarat'];
+    }
+    else if (province === 'Gilgit-Baltistan')
+    {
+      return ['Chilas', 'Gamba Skardu','Gilgit','Hunza','Khaplu','Skardu'];
+    }
+    else if (province === 'Islamabad')
+    {
+      return ['Islamabad - Ali Pur', 'Islamabad - B - 17','Islamabad - Bahria Enclave','Islamabad - Bahria Town','Islamabad - Banni Gaala','Islamabad - Bhara Kahu','Islamabad - Chak Shahzad','Islamabad - Chatta Bakhtawar','Islamabad - D - 12','Islamabad - D - 13','Islamabad - D - 17','Islamabad - DHA','Islamabad - E - 10','Islamabad - E - 11','Islamabad - E - 18','Islamabad - E - 7','Islamabad - E - 8','Islamabad - E - 9','Islamabad - F - 10','Islamabad - F - 11','Islamabad - F - 17','Islamabad - F - 5','Islamabad - F - 6','Islamabad - F - 7','Islamabad - F - 8','Islamabad - G - 10','Islamabad - G - 11','Islamabad - G - 12','Islamabad - G - 13','Islamabad - G - 14','Islamabad - G - 15','Islamabad - G - 5','Islamabad - G - 6','Islamabad - G - 7','Islamabad - G - 8','Islamabad - G - 9','Islamabad - Ghauri Town','Islamabad - H - 10','Islamabad - H - 11','Islamabad - H - 12','Islamabad - H -13','Islamabad - H - 15','Islamabad - H - 8','Islamabad - H - 9','Islamabad - I - 10','Islamabad - I - 11','Islamabad - I - 12','Islamabad - I - 14','Islamabad - I - 16','Islamabad - I - 8','Islamabad - I - 9','Islamabad - Jhangi Syedian','Islamabad - Rawal Town','Islamabad - Sohan','Islamabad - Tarlai Kalan','Tarnol'];
+    }
+    else if (province === 'Khyber Pakhtunkhwa')
+    {
+      return ['Abbottabad', 'Bannu', 'Batkhela', 'Charsadda', 'Chitral', 'Dera Ismail Khan', 'Dir', 'Haripur', 'Hangu', 'Karak', 'Kohat', 'Kohistan', 'Lower Dir', 'Malakand', 'Mansehra', 'Mardan', 'Mohmand Agency', 'Nowshera', 'Orakzai Agency', 'Peshawar', 'Shangla', 'South Waziristan', 'Swabi', 'Swat', 'Tank', 'Upper Dir'];
+    }
+    else if (province === 'Punjab')
+    {
+      return ['Ahmedpur East', 'Arifwala', 'Attock', 'Bahawalnagar', 'Bahawalpur', 'Bhakkar', 'Burewala', 'Chakwal', 'Chichawatni', 'Chiniot', 'Daska', 'Dera Ghazi Khan', 'Faisalabad', 'Gujar Khan', 'Gujranwala', 'Gujrat', 'Hafizabad', 'Haroonabad', 'Hasilpur', 'Jaranwala', 'Jhang', 'Jhelum', 'Kamoke', 'Kasur', 'Khanewal', 'Khanpur', 'Khushab', 'Lahore', 'Layyah', 'Lodhran', 'Mailsi', 'Mandi Bahauddin', 'Mian Channu', 'Mianwali', 'Multan', 'Muridke', 'Muzaffargarh', 'Nankana Sahib', 'Narowal', 'Okara', 'Pakpattan', 'Pattoki', 'Rahim Yar Khan', 'Rajanpur', 'Rawalpindi', 'Sadiqabad','Sargodha', 'Sahiwal', 'Sambrial', 'Shakargarh', 'Sheikhupura', 'Sialkot', 'Sohawa', 'Talagang', 'Taxila', 'Toba Tek Singh', 'Vehari', 'Wah Cantonment', 'Wazirabad'];
+    }
+    else if (province === 'Sindh')
+    {
+      return ['Badin', 'Dadu', 'Ghotki', 'Hyderabad', 'Jacobabad', 'Jamshoro', 'Karachi', 'Kashmore', 'Khairpur', 'Larkana', 'Matiari', 'Mirpur Khas', 'Naushahro Feroze', 'Nawabshah', 'Qambar Shahdadkot', 'Sanghar', 'Shikarpur', 'Sukkur', 'Tando Allahyar', 'Tando Muhammad Khan', 'Tharparkar', 'Thatta', 'Umerkot'];
+    }
+    else {
+      return [];
+    }
+  }
+</script>

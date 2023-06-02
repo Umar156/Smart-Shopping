@@ -1,0 +1,137 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<div class="container">
+  <div class="row custom-padding-search-bar">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+      <!-- Logo -->
+      <div class="form-group responsive-logo ">
+        <%= link_to root_path do %>
+          <%= image_tag('logos/my_logo.png', alt: 'Logo' ,class:"logo-design" )  %>
+        <% end %>
+      </div>
+      <!--/ End Logo -->
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-6 col-6">
+      <!-- Search Form -->
+      <%= form_for "",url:root_path, role:"search", method: :get do %>
+        <div class=" form-group ">
+          <div class="custom-search-design ">
+            <div class="input-box">
+              <%= text_field_tag :search, @search_term, placeholder:"Search Products Here...",class:"search-focus " %>
+              <button type="submit" class="button" >Search</button>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <!--/ End Search Form -->
+    </div>
+    <%# Cart Account %>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="form-group cart-account-design" style="text-align:right;">
+        <%= link_to cart_path, style:"color:#333;" do %>
+          <i class="fa fa-shopping-cart cart-design" ></i>
+        <% end %>
+        <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
+        <% if user_signed_in?   %>
+          <% if current_user.role == 'Vendor'  %>
+            <span class="sign-in-design">Vendor</span>
+          <% elsif current_user.role == 'Admin' %>
+            <span class="sign-in-design">Admin</span>
+          <% else %>
+            <span class="sign-in-design"> Customer</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# end Cart Account %>
+  </div>
+</div>
+</header>
+<%# Navbar %>
+<div class="navbar" style="padding:0;">
+  <div class="container" style="display:block;">
+    <div class="row ">
+      <div class="col-lg-3 cat-main" >
+        <h3 class="cat-heading  "><i class="fa fa-bars"></i>CATEGORIES</h3>
+      </div>
+      <div class="col-lg-9 mt-3  ">
+        <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="container jazz-margin">
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= image_tag('master.png', alt: 'easypaisa' ,class:"jazz-logo-set" )  %>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6 shadow-sm  bg-white rounded p-4" style="margin:0 0 20px 0px;">
+        <div class="form-group ">
+          <label>Card number</label>
+          <input type="text"  class="form-control" style="box-shadow:none;" id="jazzCashNumber"  placeholder="Card number">
+        </div>
+        <div class="form-group ">
+          <label class="pt-3">Name on card</label>
+          <input type="text"  class="form-control" style="box-shadow:none;" id="cardname"  placeholder="Name on card">
+        </div>
+        <div class="form-group ">
+          <label class="pt-3">Expiration date</label>
+          <input type="text"  class="form-control" style="box-shadow:none;" id="datecard"  placeholder="MM/YY">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6">
+        <div class="row ">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3 ">
+            <div class="form-group  ">
+              <%=link_to"Discard",checkout_path , class:"no-underline  text-center discard-design form-control"%>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group ">
+              <button type="button" id="myButton"  class="no-underline text-center discard-design form-control" onclick="validateForm()">Pay Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function validateForm() {
+    var jazzCashNumber = document.getElementById("jazzCashNumber").value;
+     var cardname = document.getElementById("cardname").value;
+      var datecard = document.getElementById("datecard").value;
+
+    if (jazzCashNumber == "") {
+      alert("Please enter a card number.");
+    }
+     else if (cardname == "") {
+      alert("Please enter a card name.");
+    }
+      else if (datecard == "") {
+      alert("Please enter Expiration date.");
+    }
+  else{
+  window.location.href = "<%= root_path %>";
+   alert("Thank you for your purchase. A confirmation email has been sent to you.");
+  }
+  }
+   document.getElementById("myButton").addEventListener("click", function() {
+    validateForm();
+  });
+</script>

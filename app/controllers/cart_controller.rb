@@ -1,7 +1,11 @@
 class CartController < ApplicationController
   before_action :redirect_based_on_login_status
+  
   def show
+    
   end
+ 
+ 
 
   def redirect_based_on_login_status
     if user_signed_in?

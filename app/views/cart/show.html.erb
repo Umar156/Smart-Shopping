@@ -1,6 +1,66 @@
 <% content_for :topbar do %>
   <%= render partial: 'partials/topbar' %>
 <% end %>
+<div class="container">
+  <div class="row custom-padding-search-bar">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+      <!-- Logo -->
+      <div class="form-group responsive-logo ">
+        <%= link_to root_path do %>
+          <%= image_tag('logos/my_logo.png', alt: 'Logo' ,class:"logo-design" )  %>
+        <% end %>
+      </div>
+      <!--/ End Logo -->
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-6 col-6">
+      <!-- Search Form -->
+      <%= form_for "",url:root_path, role:"search", method: :get do %>
+        <div class=" form-group ">
+          <div class="custom-search-design ">
+            <div class="input-box">
+              <%= text_field_tag :search, @search_term, placeholder:"Search Products Here...",class:"search-focus " %>
+              <button type="submit" class="button" >Search</button>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <!--/ End Search Form -->
+    </div>
+    <%# Cart Account %>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="form-group cart-account-design" style="text-align:right;">
+        <%= link_to cart_path, style:"color:#333;" do %>
+          <i class="fa fa-shopping-cart cart-design" ></i>
+        <% end %>
+        <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
+        <% if user_signed_in?   %>
+          <% if current_user.role == 'Vendor'  %>
+            <span class="sign-in-design">Vendor</span>
+          <% elsif current_user.role == 'Admin' %>
+            <span class="sign-in-design">Admin</span>
+          <% else %>
+            <span class="sign-in-design"> Customer</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# end Cart Account %>
+  </div>
+</div>
+</header>
+<%# Navbar %>
+<div class="navbar" style="padding:0;">
+  <div class="container" style="display:block;">
+    <div class="row ">
+      <div class="col-lg-3 cat-main" >
+        <h3 class="cat-heading  "><i class="fa fa-bars"></i>CATEGORIES</h3>
+      </div>
+      <div class="col-lg-9 mt-3  ">
+        <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= turbo_frame_tag "cart" do %>
   <% if @cart.orderables.count > 0 %>
     <%= render "cart/orderables" %>
@@ -11,7 +71,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-3">
           <div class="form-group cart-next-bg text-center">
-            <%= link_to "CHECKOUT", root_path, class: "cart-next-process no-underline", onclick: "scrollToTarget();" %>
+            <%= link_to "CHECKOUT", checkout_path, class: "cart-next-process no-underline", onclick: "scrollTocheckout();" %>
           </div>
           <div class="form-group cart-next-bg text-center mt-3">
             <%= link_to "CONTINUE SHOPPING", root_path, class: "cart-next-process no-underline", onclick: "scrollToTarget();" %>
@@ -41,5 +101,8 @@
 <script>
   function scrollToTarget() {
     window.location.href = '<%= root_path %>';
+  }
+    function scrollTocheckout(){
+    window.location.href = '<%= checkout_path %>';
   }
 </script>

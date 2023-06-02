@@ -7,6 +7,7 @@ class Orderable < ApplicationRecord
   end
 
  
+ 
 end
 
 

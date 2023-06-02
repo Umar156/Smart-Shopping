@@ -1,11 +1,6 @@
-<head>
-  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
-  <style>
-    body {
-    background-color: #f6f6f7;
-    }
-  </style>
-</head>
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
 <div class="container">
   <div class="row custom-padding-search-bar">
     <div class="col-lg-2 col-md-2 col-sm-2 col-12">
@@ -66,38 +61,6 @@
     </div>
   </div>
 </div>
-<div class="container mt-6 ">
-  <div class="row ">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 col-md-12 col-12">
-      <div class="shadow-sm p-5 mb-4 bg-white rounded ">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="text-center pb-4">
-            <h3 class="change-font-family">Login</h3>
-          </div>
-          <div class="field form-group">
-            <%= f.label :email , class:"fw-custom-email-pass" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control mb-4 custom-shadow-box" , placeholder:"user@example.com" , required:"true"  %>
-          </div>
-          <div class="field form-group">
-            <%= f.label :password , class:"fw-custom-email-pass" %><br />
-            <%= f.password_field :password, autocomplete: "current-password" , class:"form-control custom-shadow-box" , required:"true"  %>
-          </div>
-          <div>
-            <%= render "devise/shared/links" %>
-          </div>
-          <div class="actions form-group">
-            <%= f.submit "Login" , class:"form-control clr-log mt-4 butt"  %>
-          </div>
-        <% end %>
-      </div>
-      <div class="row ">
-        <div class="col-md-4"></div>
-        <div class="col-md-4   new-member-note">
-          New member? <%= link_to "Register" , new_user_registration_path , class:"reg-design" %> here
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    </div>
-  </div>
+<div class="pro-cat-filter">
+  <%= render 'homes/product_list' %>
 </div>

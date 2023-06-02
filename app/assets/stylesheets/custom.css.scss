@@ -511,7 +511,10 @@ body {
   color: #333333;
   padding: 13px 25px;
   font: 14px Poppins, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+}
+.dynamic-category-design {
+  margin-bottom: 6px;
 }
 
 .sub-cat-design:hover {
@@ -734,4 +737,102 @@ body {
 .empty-cart-cont:hover {
   color: #ffffff;
   background: #f7941d;
+}
+
+// Checkout form
+.cart-small-line {
+  border: 1px solid #f7941d;
+  width: 50px;
+  text-align: center;
+}
+.cart-container-design {
+  padding: 80px 0px 50px 0px;
+}
+.checkout-main-heading {
+  font: 25px Poppins, sans-serif;
+  color: #333;
+  font-weight: 700;
+  line-height: 27px;
+}
+.sub-head-checkout {
+  font: 16px Poppins, sans-serif;
+  color: #333;
+  font-weight: 400;
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+.checkout-full-name {
+  color: #333333;
+  font-weight: 400;
+  margin-bottom: 8px;
+  padding-top: 15px;
+}
+.checkout-steric {
+  color: #ff2c18;
+  font: 16px Poppins, sans-serif;
+  font-weight: 800;
+}
+.checkout-input-design {
+  border: none !important;
+  background: #f6f7fb !important;
+  border-radius: 0 !important;
+  height: 40px;
+}
+.checkout-input-design:focus {
+  border: 2px solid #333 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.checkout-total-cart {
+  font: 15px Poppins, sans-serif;
+  font-weight: 600;
+  color: #333;
+  line-height: 24px;
+  margin-bottom: 0;
+}
+.checkout-total-credential {
+  font: 15px Poppins, sans-serif;
+  font-weight: 500;
+  color: #333;
+}
+.payment-option-design {
+  border: 1px solid #eee;
+  padding: 30px !important;
+  margin-top: 20px !important;
+}
+.total-checkout-margin {
+  margin-top: 30px;
+}
+.cart-total-checkout-bottom {
+  margin-bottom: 40px;
+}
+.pro-cat-filter {
+  margin-top: 80px;
+}
+.pay-method {
+  margin-top: 26px;
+}
+.payment-card-design {
+  height: auto;
+  width: 100%;
+  margin: 20px 0px;
+}
+.payment-option-design .form-group .check-button-final {
+  background-color: #333333;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0;
+  height: 40px;
+}
+.payment-option-design .form-group .check-button-final:hover {
+  background: #f7941d;
+  transition: 0.3s ease-in-out;
+}
+.jazz-margin {
+  transform: translateY(70px);
+}
+.jazz-logo-set {
+  height: auto;
+  width: 100px;
+  transform: translateY(-10px);
 }

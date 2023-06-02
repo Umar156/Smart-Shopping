@@ -1,11 +1,6 @@
-<head>
-  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
-  <style>
-    body {
-    background-color: #f6f6f7;
-    }
-  </style>
-</head>
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
 <div class="container">
   <div class="row custom-padding-search-bar">
     <div class="col-lg-2 col-md-2 col-sm-2 col-12">
@@ -66,38 +61,63 @@
     </div>
   </div>
 </div>
-<div class="container mt-6 ">
-  <div class="row ">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 col-md-12 col-12">
-      <div class="shadow-sm p-5 mb-4 bg-white rounded ">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="text-center pb-4">
-            <h3 class="change-font-family">Login</h3>
-          </div>
-          <div class="field form-group">
-            <%= f.label :email , class:"fw-custom-email-pass" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control mb-4 custom-shadow-box" , placeholder:"user@example.com" , required:"true"  %>
-          </div>
-          <div class="field form-group">
-            <%= f.label :password , class:"fw-custom-email-pass" %><br />
-            <%= f.password_field :password, autocomplete: "current-password" , class:"form-control custom-shadow-box" , required:"true"  %>
-          </div>
-          <div>
-            <%= render "devise/shared/links" %>
-          </div>
-          <div class="actions form-group">
-            <%= f.submit "Login" , class:"form-control clr-log mt-4 butt"  %>
-          </div>
-        <% end %>
+<div>
+  <div class="container jazz-margin">
+    <div class="row">
+      <div class="col-lg-3">
       </div>
-      <div class="row ">
-        <div class="col-md-4"></div>
-        <div class="col-md-4   new-member-note">
-          New member? <%= link_to "Register" , new_user_registration_path , class:"reg-design" %> here
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= image_tag('jazcash.png', alt: 'jazzcash' ,class:"jazz-logo-set" )  %>
         </div>
-        <div class="col-md-4"></div>
+        <div class="form-group">
+          <label>JazzCash Account Number</label>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6 shadow-sm  bg-white rounded p-4" style="margin:0 0 20px 0px;">
+        <div class="form-group ">
+          <input type="text"  class="form-control" style="box-shadow:none;" id="jazzCashNumber"  placeholder="Enter phone number">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6">
+        <div class="row ">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3 ">
+            <div class="form-group  ">
+              <%=link_to"Discard",checkout_path , class:"no-underline  text-center discard-design form-control"%>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group ">
+              <button type="button" id="myButton"  class="no-underline text-center discard-design form-control" onclick="validateForm()" >Pay Now</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  function validateForm() {
+    var jazzCashNumber = document.getElementById("jazzCashNumber").value;
+
+    if (jazzCashNumber == "") {
+      alert("Please enter a phone number.");
+    } else {
+      window.location.href = "<%= root_path %>";
+      alert("Thank you for your purchase. A confirmation email has been sent to you.");
+    }
+  }
+
+  document.getElementById("myButton").addEventListener("click", function() {
+    validateForm();
+  });
+</script>
