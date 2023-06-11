@@ -1,3 +1,7 @@
+<head>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
 <% content_for :topbar do %>
   <%= render partial: 'partials/topbar' %>
 <% end %>
@@ -145,6 +149,17 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row ">
+    <div class="col-4">
+    </div>
+    <div class="col-4  ">
+      <div class="form-group paging-design ">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="hot-item-section">
   <div class="container">
     <div class="row">
@@ -154,6 +169,92 @@
         </div>
         <div class="small-line">
         </div>
+      </div>
+    </div>
+    <div id="carouselExampleControls" class="carousel slide slider-caro-design-mid" data-ride="carousel" data-interval="3000">
+      <div class="carousel-inner">
+        <div class="row">
+          <% @products.each_slice(4) do |slice| %>
+            <div class="carousel-item <%= 'active' if slice == @products.first(4) %>">
+              <div class="row">
+                <% slice.each do |product| %>
+                  <div class="col-md-3">
+                    <%= form_with(url: cart_add_path) do |f| %>
+                      <div class="card border-0">
+                        <%= image_tag product.avatar, class: "card-image-top" %>
+                        <%= f.hidden_field :id, value: product.id %>
+                        <%= f.hidden_field :quantity, value: 1, min: 1 %>
+                        <%= f.submit "ADD TO CART", class: "add-cart-button" %>
+                        <div class="card-body" style="padding-left:0px;">
+                          <h2 class="card-title"><%= product.name %></h2>
+                          <h5>Rs <%= product.price %></h5>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+        <span class="fa-solid fa-angle-left caro-design-left" aria-hidden="true" ></span>
+        <span class="sr-only pre-button-caro "></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="fa-solid fa-angle-right caro-design-right" aria-hidden="true" >&#8250;</span>
+        <span class="sr-only"></span>
+      </a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </div>
+</div>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="form-group text-center">
+          <h2 class="section-title">On Sale</h2>
+        </div>
+        <div class="small-line">
+        </div>
+      </div>
+    </div>
+    <div class="row sale-product-design-marg">
+      <% @products.each do |product| %>
+        <div class="col-md-4 ">
+          <div class="row sale-pro-design">
+            <div class="col-6">
+              <%= form_with(url:cart_add_path) do |f| %>
+                <div class="card-design-sell border-0 ">
+                  <%=image_tag product.avatar , class:"card-image-top" %>
+                  <%= f.hidden_field :id,value: product.id%>
+                  <%= f.hidden_field :quantity,value: 1, min: 1%>
+                  <%= f.submit "ADD TO CART" , class:"add-cart-button-sell"%>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-6">
+              <div class="card-body pt-5 "style="padding-left:0px; ">
+                <h2 class="card-titel"><%= product.name %></h2>
+                <h5 >Rs <%=product.price%></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row ">
+    <div class="col-4">
+    </div>
+    <div class="col-4  ">
+      <div class="form-group paging-design ">
+        <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
   </div>

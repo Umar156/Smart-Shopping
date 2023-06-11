@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   before_action :set_render_cart
   before_action :initialize_cart
   before_action :configure_permitted_parameters, if: :devise_controller?

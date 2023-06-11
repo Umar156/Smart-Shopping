@@ -18,12 +18,4 @@ Rails.application.routes.draw do
   resources:category
   get '/category/:id/products', to: 'category#cat_products', as: 'category_products' 
   
-  
-
-
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

@@ -45,6 +45,8 @@ class CartController < ApplicationController
         locals: { cart: @cart })
       end
    end
+   @delete_button_pressed = true
+
   end
   
 end

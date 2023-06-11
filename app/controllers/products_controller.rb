@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  def index
-    if user_signed_in? 
+  def index 
+   if user_signed_in? 
     @products = Product.all
     if params[:search]
       @search_term = params[:search]

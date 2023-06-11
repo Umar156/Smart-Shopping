@@ -1,7 +1,6 @@
 class HomesController < ApplicationController
   def index
-   
-    @products = Product.all.order(created_at: :desc)
+    @pagy, @products = pagy(Product.all.order(created_at: :desc))
     @category = Category.all
     if params[:search]
       @search_term = params[:search]

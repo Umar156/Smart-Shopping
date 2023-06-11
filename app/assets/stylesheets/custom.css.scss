@@ -591,7 +591,7 @@ body {
   font-weight: 700;
 }
 .cart-sec {
-  padding: 100px 0px;
+  padding: 90px 0px 70px 0px;
 }
 .small-line {
   border: 1px solid #f7941d;
@@ -642,6 +642,7 @@ body {
   height: 100%;
   width: 100%;
 }
+
 .add-cart-button {
   color: #424646;
   font-size: 14px;
@@ -738,7 +739,36 @@ body {
   color: #ffffff;
   background: #f7941d;
 }
-
+.sale-pro-design {
+  border: 1px solid #eee;
+  margin: 5px 10px !important;
+  padding: 10px 0px;
+}
+.card-design-sell:hover .add-cart-button-sell {
+  display: block;
+  transition: opacity 1s ease-in-out;
+}
+.card-design-sell {
+  position: relative;
+}
+.add-cart-button-sell {
+  color: #424646;
+  font-size: 14px;
+  border: none;
+  background: white;
+  font-weight: 500;
+  display: none;
+  position: absolute;
+  bottom: 0.5px;
+  left: 0;
+  width: 100%;
+}
+.add-cart-button-sell:hover {
+  color: #f7941d;
+}
+.sale-product-design-marg {
+  padding: 70px 0px;
+}
 // Checkout form
 .cart-small-line {
   border: 1px solid #f7941d;
@@ -835,4 +865,38 @@ body {
   height: auto;
   width: 100px;
   transform: translateY(-10px);
+}
+
+// carousel deisgn left
+.caro-design-left {
+  margin-right: 170px;
+  margin-bottom: 50px;
+  padding: 10px;
+  color: #333;
+  background-color: #ffffff;
+  font-size: 20px;
+}
+.caro-design-right {
+  margin-left: 170px;
+  margin-bottom: 50px;
+  padding: 10px;
+  color: #333;
+  background-color: #ffffff;
+  font-size: 20px;
+}
+.caro-design-left:hover {
+  color: #ffffff;
+  background-color: #f7941d;
+}
+.caro-design-right:hover {
+  color: #ffffff;
+  background-color: #f7941d;
+}
+.slider-caro-design-mid {
+  padding: 90px 0px;
+}
+.paging-design {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 20px;
 }

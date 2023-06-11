@@ -28,6 +28,9 @@
     </div>
     -->
     <!-- End Preloader -->
+    <% if current_page?(cart_path) %>
+      <%= render "cart/cart-top" %>
+    <% end %>
     <%= yield :topbar %>
     <%= yield %>
     <div class="container  ">
