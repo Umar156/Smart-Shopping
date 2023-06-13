@@ -49,6 +49,120 @@
         </div>
       </div>
     </div>
+    <%# Footer %>
+    <div class="bg-footer-design">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="row">
+              <div class="col-3 rocket-outside-design">
+                <i class="bi bi-rocket rocket-footer"></i>
+              </div>
+              <div class="col-9" style="padding-left:0px;">
+                <h4 class="rocket-headng">FREE SHIPING</h4>
+                <p class="rocket-text-design">Orders over Rs 1000</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="row">
+              <div class="col-3 rocket-outside-design" style="line-height:60px;">
+                <i class="fa fa-refresh rocket-footer"></i>
+              </div>
+              <div class="col-9" style="padding-left:0px;">
+                <h4 class="rocket-headng">FREE RETURN</h4>
+                <p class="rocket-text-design">Within 30 days returns</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="row">
+              <div class="col-3 rocket-outside-design" style="line-height:60px;">
+                <i class="fa fa-lock rocket-footer"></i>
+              </div>
+              <div class="col-9" style="padding-left:0px;">
+                <h4 class="rocket-headng">SECURE PAYMENT</h4>
+                <p class="rocket-text-design">100% secure payment</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="row">
+              <div class="col-3 rocket-outside-design" style="line-height:60px;">
+                <i class="fa fa-tag rocket-footer"></i>
+              </div>
+              <div class="col-9" style="padding-left:0px;">
+                <h4 class="rocket-headng">BEST PEICE</h4>
+                <p class="rocket-text-design">Guaranteed price</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="last-footer">
+      <div class="container">
+        <div class="row footer-paddg-design">
+          <div class="col-lg-3 col-md-6">
+            <div class="form-group responsive-logo footer-logo-design">
+              <%= link_to root_path do %>
+                <%= image_tag('logos/my_logo2.png', alt: 'Logo' ,class:"logo-design footer-logo-design-custom" )  %>
+              <% end %>
+            </div>
+            <div>
+              <p class="About-footer-store"> This Store bring together multiple sellers offering a variety of products in one convenient location for customers.</p>
+            </div>
+            <div>
+              <p class="contact-footer-design">
+                Got Question? Call us 24/7
+              </p>
+              <p class="number-footer-design">+923096220762</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="info-footer-design">Information</h4>
+            <p class="footer-info-creden"><%= link_to "About Us", about_path , class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"><%= link_to "Faq", help_path, class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"> <%= link_to "Terms & Conditions", terms_path, class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"><%= link_to "Contact Us" ,contact_path, class:"about-footer-cred"%></p>
+            <%= link_to "Help", help_path, class:"about-footer-cred"%>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="info-footer-design">Customer Service</h4>
+            <p class="footer-info-creden"><%= link_to "Payment Methods", root_path , class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"><%= link_to "Newsletter", newsletter_path, class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"> <%= link_to "Security", security_path, class:"about-footer-cred"%></p>
+            <p class="footer-info-creden"><%= link_to "Shipping", shipterm_path, class:"about-footer-cred"%></p>
+            <%= link_to "Privacy Policy", privacy_path, class:"about-footer-cred"%>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="info-footer-design">Get In Touch</h4>
+            <div>
+              <p class="About-footer-store"> NO. 342 - Mall Road Street. 012 Lahore.</p>
+            </div>
+            <div>
+              <p class="contact-footer-design">
+                info@smartshopping.com
+              </p>
+              <p class="contact-footer-design">+032 3456 7890</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer-line">
+          </div>
+          <div class="col-lg 4">
+            <p class="footer-end-copyrign-design">Copyright © 2023 Smart Shoping - All Rights Reserved.</p>
+          </div>
+          <div class="col-lg 4">
+          </div>
+          <div class="col-lg 4">
+            <%= image_tag('logos/payments.png', alt: 'payment' , class:"pay-footer"  ) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# Footer end %>
   </body>
   <script>
     setTimeout(() => {

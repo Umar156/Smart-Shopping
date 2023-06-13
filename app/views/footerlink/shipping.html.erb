@@ -1,0 +1,64 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .shipp {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 30px;
+        box-shadow: 0px 0px 15px #0000001a;
+        padding: 25px;
+    }
+
+    .ship-head {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .nd-head {
+        color: #666;
+        font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .paragroup {
+        color: #555;
+        line-height: 1.5;
+    }
+
+    ul .uli {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    ul .uli li {
+        list-style-type: disc;
+        margin-left: 20px;
+        color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container shipp">
+    <h1 class="ship-head">Shipping Information</h1>
+    <p>Welcome to our shipping information page. We strive to provide fast and reliable shipping services for your orders. Here are some important details about our shipping process:</p>
+    <h2 class="nd-head">Shipping Policies</h2>
+    <ul class="uli">
+      <li>We offer free shipping on all orders above $50.</li>
+      <li>For orders below $50, a flat shipping fee of $5 will be applied.</li>
+      <li>We currently ship to customers within the United States.</li>
+      <li>Orders are processed and shipped within 1-2 business days.</li>
+    </ul>
+    <h2>Delivery Times</h2>
+    <p class="paragroup">Our estimated delivery times are as follows:</p>
+    <ul>
+      <li>Standard Shipping: 3-5 business days</li>
+      <li>Expedited Shipping: 1-3 business days</li>
+      <li>Express Shipping: 1 business day</li>
+    </ul>
+    <p>Please note that the delivery times mentioned above are approximate and may vary depending on factors such as the shipping destination and any unforeseen circumstances.</p>
+  </div>

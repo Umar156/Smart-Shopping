@@ -40,9 +40,9 @@
         <i class="fa fa-user-circle-o  account-design" aria-hidden="true"></i>
         <% if user_signed_in?   %>
           <% if current_user.role == 'Vendor'  %>
-            <span class="sign-in-design">Vendor</span>
+            <%= link_to "Vendor", vendors_path, class: "sign-in-design no-underline" %>
           <% elsif current_user.role == 'Admin' %>
-            <span class="sign-in-design">Admin</span>
+            <%= link_to "Admin", admins_path, class: "sign-in-design no-underline" %>
           <% else %>
             <span class="sign-in-design"> Customer</span>
           <% end %>
@@ -62,6 +62,10 @@
       </div>
       <div class="col-lg-9 mt-3  ">
         <%= link_to "Home " , root_path , class:"no-underline custom-navlinks " %>
+        <%= link_to "Shipping " , shipterm_path , class:"no-underline custom-navlinks " %>
+        <%= link_to "Newsletter " , newsletter_path , class:"no-underline custom-navlinks " %>
+        <%= link_to "About Us " , about_path , class:"no-underline custom-navlinks " %>
+        <%= link_to "Contact Us " , contact_path , class:"no-underline custom-navlinks " %>
       </div>
     </div>
   </div>

@@ -16,6 +16,17 @@ Rails.application.routes.draw do
   resources:products
   resources:checkout
   resources:category
+  resources:admins
+  resources:vendors
   get '/category/:id/products', to: 'category#cat_products', as: 'category_products' 
+  get "contact" , to: 'footerlink#contact'
+  get "help" , to: 'footerlink#help'
+  get "privacy" , to: 'footerlink#privacy'
+  get "about" , to: 'footerlink#about'
+  get "terms" , to: 'footerlink#terms'
+  get "shipterm" , to: 'footerlink#shipping'
+  get "security" , to: 'footerlink#security'
+  get "newsletter" , to: 'footerlink#nll'
   
+ 
 end

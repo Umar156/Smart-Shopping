@@ -1,0 +1,63 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .form-group.row {
+        margin-bottom: 20px;
+    }
+
+    .bg-card {
+        background-color: white;
+        margin-top: 10px;
+        border-radius: 1px;
+        /* box-shadow: 0px 0px 15px #0000001a; */
+        padding: 10px;
+    }
+
+    .contact-btn:hover {
+        background-color: #fd7e14;
+        border: none;
+    }
+
+    @media (max-width: 576px) {
+        .form-group.row {
+            flex-direction: column;
+        }
+    }
+  </style>
+</head>
+<div class="container bg-card">
+  <h2 style="color:#fd7e14;" class="mt-4 mb-4">Get in Touch</h2>
+  <h1>Write us a message</h1>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Your Name*</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="subject">Your Subject*</label>
+        <input type="text" class="form-control" id="subject" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Your Email*</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Your Phone*</label>
+        <input type="tel" class="form-control" id="phone" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message*</label>
+      <textarea class="form-control" id="message" rows="4" required></textarea>
+    </div>
+    <div class="form-group ">
+      <button type="submit" class="btn btn-dark text-light contact-btn">Send Message</button>
+    </div>
+  </form>
+</div>

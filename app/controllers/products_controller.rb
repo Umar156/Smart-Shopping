@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index 
-   if user_signed_in? 
+    if user_signed_in? && (current_user.role == "Admin" || current_user.role == "Vendor")
     @products = Product.all
     if params[:search]
       @search_term = params[:search]

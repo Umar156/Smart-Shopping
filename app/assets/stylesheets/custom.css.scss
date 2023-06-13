@@ -900,3 +900,113 @@ body {
   display: flex;
   padding-bottom: 20px;
 }
+// Footer
+.bg-footer-design {
+  background-color: #f6f7fb;
+  padding: 60px 0px 40px 0px;
+}
+.rocket-footer {
+  color: #333;
+  font-size: 32px;
+}
+.rocket-outside-design {
+  text-align: center;
+}
+.rocket-headng {
+  color: #333333;
+  font: 14px Poppins, sans-serif;
+  font-weight: 600;
+}
+.rocket-text-design {
+  color: #898989;
+  font: 14px Poppins, sans-serif;
+}
+.payment-footer-ship {
+  margin-bottom: 90px;
+}
+.last-footer {
+  background-color: #434343;
+  background-image: linear-gradient(to right, #434343, #000000);
+  margin-top: 20px;
+}
+.footer-logo-design {
+  margin-bottom: 20px;
+}
+.About-footer-store {
+  color: #ffffff;
+  font-weight: 400;
+  font: 15px Poppins, sans-serif;
+  line-height: 27px;
+}
+.contact-footer-design {
+  color: #ffffff;
+  font-weight: 400;
+  font: 15px Poppins, sans-serif;
+  margin-bottom: 8px;
+}
+.number-footer-design {
+  color: #f7941d;
+  font: 20px Poppins, sans-serif;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.footer-logo-design-custom {
+  width: 130px;
+}
+.info-footer-design {
+  margin-bottom: 33px;
+  margin-top: 18px;
+  color: #ffffff;
+  font: 20px Poppins, sans-serif;
+  font-weight: 600;
+}
+.footer-info-creden {
+  margin-bottom: 8px;
+}
+.footer-info-creden:hover {
+  transform: translateX(10px);
+  transition: transform 0.5s ease-in-out;
+}
+.about-footer-cred {
+  color: #fff;
+  text-decoration: none;
+}
+.about-footer-cred:hover {
+  color: #f7941d;
+}
+.footer-paddg-design {
+  padding: 100px 0px;
+}
+.footer-line {
+  border: 1px solid #535353;
+}
+.footer-end-copyrign-design {
+  margin-bottom: 0px;
+  font: 14px Poppins, sans-serif;
+  color: #ffffff;
+  padding: 20px 0px;
+}
+.pay-footer {
+  padding: 20px 0px;
+  float: none;
+}
+@media screen and (min-width: 992px) {
+  .pay-footer {
+    float: right;
+  }
+}
+// Admin dashboard
+.admin-nav-design {
+  background-color: #333;
+  padding: 25px 0px;
+}
+.admin-pro-design {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.admin-pro-design:hover {
+  color: #fff;
+  padding: 25px 10px;
+  background-color: #f7941d;
+}

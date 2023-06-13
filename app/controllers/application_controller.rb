@@ -24,6 +24,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User) && resource.role == 'Admin'
+      return admins_path
+    elsif resource.is_a?(User) && resource.role == 'Vendor'
+      return vendors_path
+      else
+      return super
+    end
+  end
  
 end
 

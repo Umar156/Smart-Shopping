@@ -1,0 +1,86 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .Help-section {
+        max-width: 800px;
+        padding: 60px;
+        box-shadow: 0px 0px 15px #0000001a;
+        margin-top: 100px;
+    }
+
+    .section-help-title {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-help-content {
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .faq-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .faq-list li {
+        margin-bottom: 20px;
+    }
+
+    .faq-question {
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .faq-answer {
+        margin-top: 10px;
+        display: none;
+    }
+
+    .faq-toggle-icon {
+        float: right;
+        font-size: 20px;
+        margin-top: 4px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $(".faq-question").click(function() {
+            $(this).toggleClass("active").next(".faq-answer").slideToggle();
+        });
+    });
+  </script>
+</head>
+<div class="container Help-section">
+  <h1 class="section-help-title">Help</h1>
+  <div class="section-help-content">
+    <ul class="faq-list">
+      <li>
+        <div class="faq-question">How do I place an order?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">To place an order, follow these simple steps:<br>
+          1. Browse our website and add the desired products to your shopping cart.<br>
+          2. Proceed to the checkout page and enter your shipping and payment information.<br>
+          3. Review your order
+          details and confirm the purchase.<br>
+          4. Once the order is placed, you will receive an order confirmation email.</div>
+      </li>
+      <li>
+        <div class="faq-question">What payment methods do you accept?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">We accept various payment methods, including credit/debit cards, PayPal, and Apple Pay. At checkout, you can select your preferred payment option and complete the transaction securely.</div>
+      </li>
+      <li>
+        <div class="faq-question">How long does shipping take?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">Shipping times may vary depending on your location and the products ordered. Generally, we strive to process and ship orders within 1-2 business days. Once shipped, the estimated delivery time will be provided in your order confirmation
+          email.
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

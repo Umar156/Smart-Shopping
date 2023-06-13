@@ -1,0 +1,60 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .letter {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 60px;
+        box-shadow: 0px 0px 15px #0000001a;
+        padding: 30px;
+    }
+
+    .letter-h1 {
+        color: #333;
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+
+    .letter-p {
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .lettere-form {
+        margin-top: 20px;
+    }
+
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        background-color: #fd7e14;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #1f251f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container letter">
+    <h1 class="letter-h1">Subscribe to Our Newsletter</h1>
+    <p class="letter-p">Stay updated with the latest news, promotions, and product launches by subscribing to our newsletter. Enter your email address below to subscribe:</p>
+    <form class="lettere-form" action="/subscribe" method="POST">
+      <input type="email" name="email" placeholder="Enter your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>

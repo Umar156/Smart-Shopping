@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   rolify
   validates :first_name,presence: {message:"! First name can't be blank"}, format: { with: /\A[a-zA-Z]+\z/, message: "! First name only allows letters" },length:{maximum:20 , message:"! First name is too long(maximum is 20 characters)"}
   validates :last_name,presence:{message:"! Last name can't be blank"}, format: { with: /\A[a-zA-Z]+\z/, message: "! Last name only allows letters" },length:{maximum:20 , message:"! Last name is too long(maximum is 20 characters)"}

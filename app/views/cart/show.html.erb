@@ -1,40 +1,42 @@
-<%= turbo_frame_tag "cart" do %>
-  <% if @cart.orderables.count > 0 %>
-    <%= render "cart/orderables" %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3">
-          <div class="form-group cart-next-bg text-center">
-            <%= link_to "CHECKOUT", checkout_path, class: "cart-next-process no-underline", onclick: "scrollTocheckout();" %>
-          </div>
-          <div class="form-group cart-next-bg text-center mt-3">
-            <%= link_to "CONTINUE SHOPPING", root_path, class: "cart-next-process no-underline", onclick: "scrollToTarget();" %>
+<div class="mb-5">
+  <%= turbo_frame_tag "cart" do %>
+    <% if @cart.orderables.count > 0 %>
+      <%= render "cart/orderables" %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3">
+            <div class="form-group cart-next-bg text-center">
+              <%= link_to "CHECKOUT", checkout_path, class: "cart-next-process no-underline", onclick: "scrollTocheckout();" %>
+            </div>
+            <div class="form-group cart-next-bg text-center mt-3">
+              <%= link_to "CONTINUE SHOPPING", root_path, class: "cart-next-process no-underline", onclick: "scrollToTarget();" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
-<% if @cart.orderables.count > 0%>
-<%else%>
-  <div class="outer-els-empty-cart ">
-    <div class="container outer-els-cont">
-      <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-          <div class="form-group outer-els-cont text-center ">
-            <p class="empty-cart-design">There are no items in this cart</p>
-            <%= link_to "CONTINUE SHOPPING" ,root_path , class:" no-underline text-center empty-cart-cont"%>
+  <% if @cart.orderables.count > 0%>
+  <%else%>
+    <div class="outer-els-empty-cart">
+      <div class="container outer-els-cont">
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <div class="form-group outer-els-cont text-center ">
+              <p class="empty-cart-design">There are no items in this cart</p>
+              <%= link_to "CONTINUE SHOPPING" ,root_path , class:" no-underline text-center empty-cart-cont"%>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<%end%>
+  <%end%>
+</div>
 <script>
   function scrollToTarget() {
     window.location.href = '<%= root_path %>';

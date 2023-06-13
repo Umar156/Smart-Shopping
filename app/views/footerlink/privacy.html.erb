@@ -1,0 +1,51 @@
+<% content_for :topbar do %>
+  <%= render partial: 'partials/topbar' %>
+<% end %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .privicy-policy-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px;
+        box-shadow: 0px 0px 15px #0000001a;
+    }
+
+    .section-title {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-content {
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .section-content h4 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+  </style>
+</head>
+<div class="container privicy-policy-page">
+  <h1 class="section-title">Privacy Policy</h1>
+  <div class="section-content">
+    <h4>1. Information We Collect</h4>
+    <p>We collect personal information, such as your name, email address, and shipping address, when you place an order or create an account on our website. We may also collect non-personal information, such as your IP address and browser type, for
+      analytical purposes.</p>
+    <h4>2. How We Use Your Information</h4>
+    <p>We use the collected information to process your orders, communicate with you about your purchases, improve our website and services, and personalize your shopping experience. We do not sell or share your personal information with third parties
+      for their marketing purposes.</p>
+    <h4>3. Security Measures</h4>
+    <p>We implement industry-standard security measures to protect your personal information from unauthorized access and misuse. However, please note that no method of transmission over the internet or electronic storage is completely secure.</p>
+    <h4>4. Cookies</h4>
+    <p>We use cookies to enhance your browsing experience and provide personalized content. You have the option to disable cookies in your browser settings, but this may limit certain features and functionality of our website.</p>
+    <h4>5. External Links</h4>
+    <p>Our website may contain links to external sites that are not operated by us. We are not responsible for the privacy practices or content of these third-party sites. We encourage you to review their privacy policies before providing any personal
+      information.
+    </p>
+    <p>By using our website, you agree to the terms outlined in this Privacy Policy. If you do not agree with any part of this policy, please refrain from using our website.</p>
+  </div>
+</div>
